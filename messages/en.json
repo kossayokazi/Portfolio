@@ -7,6 +7,7 @@
     "cta": "Get a quote",
     "work": "See my work"
   },
+  "about": { "heading": "About me" },
   "footer": { "rights": "© 2026 Kossay. All rights reserved." },
   "common": { "soon": "Coming soon.", "theme": "Toggle theme", "language": "Language", "menu": "Menu" }
 }

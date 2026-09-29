@@ -7,6 +7,7 @@
     "cta": "Demander un devis",
     "work": "Voir mes projets"
   },
+  "about": { "heading": "À propos de moi" },
   "footer": { "rights": "© 2026 Kossay. Tous droits réservés." },
   "common": { "soon": "Bientôt disponible.", "theme": "Changer de thème", "language": "Langue", "menu": "Menu" }
 }
