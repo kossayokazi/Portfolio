@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg: rgb(250 250 252);
+  --color-fg: rgb(15 23 42);
+  --color-muted: rgb(100 116 139);
+  --color-line: rgb(226 232 240);
+  --color-accent: rgb(79 70 229);
+  --color-onaccent: rgb(255 255 255);
+  --font-display: "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+  --font-sans: Inter, system-ui, sans-serif;
+}
+
+.dark {
+  --color-bg: rgb(9 11 20);
+  --color-fg: rgb(232 234 240);
+  --color-muted: rgb(148 155 175);
+  --color-line: rgb(30 35 54);
+  --color-accent: rgb(129 140 248);
+  --color-onaccent: rgb(9 11 20);
+}
+
+body { background: var(--color-bg); color: var(--color-fg); font-family: var(--font-sans); }
+h1, h2, h3 { font-family: var(--font-display); }
+html[lang="ar"] body, html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { font-family: "IBM Plex Sans Arabic", system-ui, sans-serif; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 4px; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

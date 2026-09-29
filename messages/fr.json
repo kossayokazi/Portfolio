@@ -1,0 +1,12 @@
+{
+  "nav": { "home": "Accueil", "about": "À propos", "services": "Services", "projects": "Projets", "blog": "Blog", "contact": "Contact" },
+  "hero": {
+    "badge": "Disponible pour de nouveaux projets",
+    "title": "Salut, je suis Kossay. Je crée des applications web que les gens aiment utiliser.",
+    "sub": "Développeur Full-Stack, j'aide les entreprises à lancer des sites, produits SaaS, boutiques en ligne et outils IA rapides, propres et fiables.",
+    "cta": "Demander un devis",
+    "work": "Voir mes projets"
+  },
+  "footer": { "rights": "© 2026 Kossay. Tous droits réservés." },
+  "common": { "soon": "Bientôt disponible.", "theme": "Changer de thème", "language": "Langue", "menu": "Menu" }
+}

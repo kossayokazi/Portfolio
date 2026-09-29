@@ -1,0 +1,12 @@
+{
+  "nav": { "home": "Home", "about": "About", "services": "Services", "projects": "Projects", "blog": "Blog", "contact": "Contact" },
+  "hero": {
+    "badge": "Available for new projects",
+    "title": "Hi, I'm Kossay. I build web apps people enjoy using.",
+    "sub": "I'm a Full-Stack Developer who helps businesses launch fast, clean, and reliable websites, SaaS products, online stores, and AI-powered tools.",
+    "cta": "Get a quote",
+    "work": "See my work"
+  },
+  "footer": { "rights": "© 2026 Kossay. All rights reserved." },
+  "common": { "soon": "Coming soon.", "theme": "Toggle theme", "language": "Language", "menu": "Menu" }
+}
