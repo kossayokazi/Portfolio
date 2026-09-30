@@ -7,6 +7,9 @@
     "cta": "Demander un devis",
     "work": "Voir mes projets"
   },
+  "about": { "heading": "À propos de moi" },
+  "projectsPage": { "filterAll": "Tous", "filterWeb": "Web", "filterSaas": "SaaS", "filterAi": "IA", "viewCase": "Voir l'étude de cas", "viewCode": "Voir le code", "viewLive": "Démo en ligne" },
+  "caseStudy": { "problem": "Le problème", "solution": "La solution", "role": "Mon rôle", "highlights": "Points clés", "stack": "Stack technique", "back": "Retour aux projets" },
   "footer": { "rights": "© 2026 Kossay. Tous droits réservés." },
   "common": { "soon": "Bientôt disponible.", "theme": "Changer de thème", "language": "Langue", "menu": "Menu" }
 }

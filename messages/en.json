@@ -7,6 +7,9 @@
     "cta": "Get a quote",
     "work": "See my work"
   },
+  "about": { "heading": "About me" },
+  "projectsPage": { "filterAll": "All", "filterWeb": "Web", "filterSaas": "SaaS", "filterAi": "AI", "viewCase": "View case study", "viewCode": "View code", "viewLive": "Live demo" },
+  "caseStudy": { "problem": "The problem", "solution": "The solution", "role": "My role", "highlights": "Highlights", "stack": "Stack", "back": "Back to projects" },
   "footer": { "rights": "© 2026 Kossay. All rights reserved." },
   "common": { "soon": "Coming soon.", "theme": "Toggle theme", "language": "Language", "menu": "Menu" }
 }
