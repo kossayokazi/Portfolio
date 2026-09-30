@@ -10,6 +10,24 @@
   "about": { "heading": "À propos de moi" },
   "projectsPage": { "filterAll": "Tous", "filterWeb": "Web", "filterSaas": "SaaS", "filterAi": "IA", "viewCase": "Voir l'étude de cas", "viewCode": "Voir le code", "viewLive": "Démo en ligne" },
   "caseStudy": { "problem": "Le problème", "solution": "La solution", "role": "Mon rôle", "highlights": "Points clés", "stack": "Stack technique", "back": "Retour aux projets" },
+    "contact": {
+    "heading": "Contactez-moi", "sub": "Je réponds sous 24 heures.",
+    "name": "Nom", "email": "Email", "message": "Message", "send": "Envoyer",
+    "sending": "Envoi…", "success": "Merci ! Je vous répondrai sous 24 heures.",
+    "error": "Une erreur est survenue. Réessayez, ou écrivez-moi directement.",
+    "downloadCv": "Télécharger le CV"
+  },
+  "testimonials": { "heading": "Ce qu'on dit de moi", "empty": "Je démarre en freelance — les témoignages arriveront ici au fil des projets." },
+  "howIWork": {
+    "heading": "Comment je travaille",
+    "steps": [
+      { "title": "On discute d'abord", "text": "Un court appel ou échange pour comprendre vos objectifs, avant d'écrire une ligne de code." },
+      { "title": "Un plan clair", "text": "Périmètre, délais et prix validés en amont, sans surprises." },
+      { "title": "Vous voyez le progrès tôt", "text": "Des démos régulières, pour piloter le projet au fil de son avancement." },
+      { "title": "Je construis proprement", "text": "Un code propre, rapide et sécurisé, qui fonctionne sur tous les appareils." },
+      { "title": "Je ne disparais pas après le lancement", "text": "Déploiement, documentation et passation inclus, et je reste joignable pour les correctifs." }
+    ]
+  },
   "footer": { "rights": "© 2026 Kossay. Tous droits réservés." },
   "common": { "soon": "Bientôt disponible.", "theme": "Changer de thème", "language": "Langue", "menu": "Menu" }
 }

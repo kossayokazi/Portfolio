@@ -10,6 +10,24 @@
   "about": { "heading": "About me" },
   "projectsPage": { "filterAll": "All", "filterWeb": "Web", "filterSaas": "SaaS", "filterAi": "AI", "viewCase": "View case study", "viewCode": "View code", "viewLive": "Live demo" },
   "caseStudy": { "problem": "The problem", "solution": "The solution", "role": "My role", "highlights": "Highlights", "stack": "Stack", "back": "Back to projects" },
+    "contact": {
+    "heading": "Get in touch", "sub": "I reply within 24 hours.",
+    "name": "Name", "email": "Email", "message": "Message", "send": "Send message",
+    "sending": "Sending…", "success": "Thanks! I'll get back to you within 24 hours.",
+    "error": "Something went wrong. Try again, or email me directly.",
+    "downloadCv": "Download CV"
+  },
+  "testimonials": { "heading": "What people say", "empty": "I'm early in my freelance journey — testimonials will land here as projects wrap up." },
+  "howIWork": {
+    "heading": "How I work",
+    "steps": [
+      { "title": "We talk first", "text": "A short call or chat to understand your goals, and I'll ask questions before writing any code." },
+      { "title": "You get a clear plan", "text": "Scope, timeline, and price agreed upfront, so there are no surprises." },
+      { "title": "You see progress early", "text": "Regular demos, so you can steer the project as it grows." },
+      { "title": "I build it properly", "text": "Clean, fast, secure code that works on every device." },
+      { "title": "I don't disappear after launch", "text": "Deployment, documentation, and handover are included, and I stay reachable for fixes." }
+    ]
+  },
   "footer": { "rights": "© 2026 Kossay. All rights reserved." },
   "common": { "soon": "Coming soon.", "theme": "Toggle theme", "language": "Language", "menu": "Menu" }
 }
