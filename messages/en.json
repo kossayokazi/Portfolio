@@ -28,6 +28,7 @@
       { "title": "I don't disappear after launch", "text": "Deployment, documentation, and handover are included, and I stay reachable for fixes." }
     ]
   },
+  "blogPage": { "heading": "Blog", "readMore": "Read more", "minRead": "min read", "back": "Back to blog" },
   "footer": { "rights": "© 2026 Kossay. All rights reserved." },
   "common": { "soon": "Coming soon.", "theme": "Toggle theme", "language": "Language", "menu": "Menu" }
 }

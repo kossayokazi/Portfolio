@@ -8,6 +8,7 @@ import HowIWork from "@/components/HowIWork";
 import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import { getDict, isLocale, type Locale } from "@/lib/i18n";
+import BlogList from "@/components/BlogList";
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
@@ -53,8 +54,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       <section id="blog" className="mx-auto max-w-6xl scroll-mt-20 border-t border-line px-5 py-20">
-        <h2 className="text-2xl font-bold">{d.nav.blog}</h2>
-        <p className="mt-2 text-muted">{d.common.soon}</p>
+        <h2 className="text-2xl font-bold md:text-3xl">{d.blogPage.heading}</h2>
+        <div className="mt-8">
+        <BlogList locale={locale} readMore={d.blogPage.readMore} minRead={d.blogPage.minRead} />
+        </div>
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-20 border-t border-line px-5 py-20">

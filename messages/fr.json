@@ -28,6 +28,7 @@
       { "title": "Je ne disparais pas après le lancement", "text": "Déploiement, documentation et passation inclus, et je reste joignable pour les correctifs." }
     ]
   },
+  "blogPage": { "heading": "Blog", "readMore": "Lire la suite", "minRead": "min de lecture", "back": "Retour au blog" },
   "footer": { "rights": "© 2026 Kossay. Tous droits réservés." },
   "common": { "soon": "Bientôt disponible.", "theme": "Changer de thème", "language": "Langue", "menu": "Menu" }
 }
