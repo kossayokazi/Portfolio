@@ -1,0 +1,46 @@
+---
+title: "Building a local AI microservice with Ollama and FastAPI"
+excerpt: "How Iterum generates backlogs from spec documents without sending any data to external AI providers."
+date: "2026-09-15"
+tags: ["AI", "Python", "FastAPI"]
+---
+
+One requirement for Iterum was strict: no project data leaves the company's machine. That ruled out any cloud AI API, so I built a small local AI microservice instead, using Ollama and FastAPI.
+
+## Why local, not cloud
+
+Cloud LLM APIs are simpler to integrate, but they mean sending specification documents (often containing business-sensitive details) to a third party. For an internal Scrum tool, that wasn't acceptable. Running the model locally with Ollama removed that risk entirely.
+
+## The basic shape of the service
+
+The microservice is fully decoupled from the main app. It exposes a small FastAPI server that the main backend calls over HTTP, so the AI logic can be developed, tested, and even swapped out independently.
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+import ollama
+
+app = FastAPI()
+
+class BacklogRequest(BaseModel):
+    spec_text: str
+
+@app.post("/generate-backlog")
+def generate_backlog(req: BacklogRequest):
+    response = ollama.chat(
+        model="mistral",
+        messages=[{
+            "role": "user",
+            "content": f"Extract a MoSCoW-prioritized backlog from this spec:\n\n{req.spec_text}"
+        }],
+    )
+    return {"backlog": response["message"]["content"]}
+```
+
+## Prompting for structured output
+
+Getting a local model to return consistent, parseable output took more prompt iteration than I expected. Being explicit about the exact format (a fixed structure per user story) reduced malformed responses significantly, compared to open-ended prompting.
+
+## What I'd do differently
+
+If I rebuilt this today, I'd add a validation layer that checks the model's output against a schema before it ever reaches the frontend, and retries with a stricter prompt if it fails. It's a small addition that would make the whole pipeline noticeably more reliable.
