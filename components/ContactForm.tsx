@@ -35,8 +35,7 @@ export default function ContactForm({ t }: { t: T }) {
         <label htmlFor="message" className="text-sm font-medium">{t.message}</label>
         <textarea id="message" name="message" required rows={5} className="mt-1 w-full rounded-lg border border-line bg-transparent px-3 py-2 outline-none focus:border-accent" />
       </div>
-      <button type="submit" disabled={status === "sending"} className="rounded-lg bg-accent px-5 py-2.5 font-medium text-onaccent transition hover:opacity-90 disabled:opacity-60">
-        {status === "sending" ? t.sending : t.send}
+      <button type="submit" disabled={status === "sending"} className="active:scale-95 rounded-lg bg-accent px-5 py-2.5 font-medium text-onaccent transition hover:opacity-90 disabled:opacity-60">        {status === "sending" ? t.sending : t.send}
       </button>
       {status === "ok" && <p className="text-sm text-emerald-500">{t.success}</p>}
       {status === "error" && <p className="text-sm text-red-500">{t.error}</p>}
