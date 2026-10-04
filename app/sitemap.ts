@@ -3,7 +3,7 @@ import { locales } from "@/lib/i18n";
 import { projects } from "@/data/content";
 import { getAllPosts } from "@/lib/blog";
 
-const SITE_URL = "https://kossay-portfolio.pages.dev";
+const SITE_URL = "https://kossay-portfolio.kossayokkazi5678.workers.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = [];

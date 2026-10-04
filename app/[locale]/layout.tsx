@@ -11,7 +11,7 @@ export const generateStaticParams = () => locales.map((locale) => ({ locale }));
 
 type P = { params: Promise<{ locale: string }> };
 
-const SITE_URL = "https://kossay-portfolio.pages.dev"; // update once you have a custom domain
+const SITE_URL = "https://kossay-portfolio.kossayokkazi5678.workers.dev"; // update once you have a custom domain
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
   const { locale } = await params;
