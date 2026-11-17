@@ -8,7 +8,7 @@ export default function Timeline({ heading }: { heading: string }) {
       <ol className="relative mt-8 space-y-8 border-s border-line ps-6">
         {items.map((it, i) => (
           <li key={i} className="relative">
-            <span className="absolute -start-[27px] top-1 h-3 w-3 rounded-full border-2 border-accent bg-bg" aria-hidden />
+            <span className="absolute -start-[27px] top-1 h-3 w-3 rounded-full border-2 border-accent bg-bg shadow-[0_0_14px_var(--color-accent)]" aria-hidden />
             <p className="text-sm text-muted">{it.period}</p>
             <h3 className="mt-1 font-semibold">{it.role}</h3>
             <p className="text-sm text-muted">{it.org}</p>
