@@ -9,5 +9,10 @@
   },
   "vars": {
     "CONTACT_EMAIL": "kossayokkazi5678@gmail.com"
+  },
+  "previews": {
+    "vars": {
+      "CONTACT_EMAIL": "kossayokkazi5678@gmail.com"
+    }
   }
 }
