@@ -37,13 +37,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       <section className="mx-auto max-w-6xl scroll-mt-20 border-t border-line px-5 py-20">
         <Reveal>
-          <Skills heading="Skills" />
+          <Skills heading={d.skills.heading} />
         </Reveal>
       </section>
 
       <section className="mx-auto max-w-6xl scroll-mt-20 border-t border-line px-5 py-20">
         <Reveal>
-          <Timeline heading="Experience & education" />
+          <Timeline heading={d.timeline.heading} />
         </Reveal>
       </section>
 
