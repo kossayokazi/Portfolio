@@ -7,8 +7,7 @@ export default function Footer({ text }: { text: string }) {
     ["Email", `mailto:${profile.email}`],
   ];
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-8 text-sm text-muted">
+    <footer className="border-t border-line bg-bg/40 backdrop-blur-xl">      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-8 text-sm text-muted">
         <p>{text}</p>
         <div className="flex gap-5">
           {links.map(([label, href]) => (
