@@ -1,5 +1,6 @@
-import type {ReactElement } from "react";
+import type { ReactElement } from "react";
 import { skillGroups } from "@/data/content";
+import SkillBar from "@/components/SkillBar";
 
 const icons: Record<string, ReactElement> = {
   code: <path d="M8 4 3 12l5 8M16 4l5 8-5 8" />,
@@ -14,7 +15,7 @@ export default function Skills({ heading }: { heading: string }) {
       <h2 className="text-2xl font-bold md:text-3xl">{heading}</h2>
       <div className="mt-8 grid gap-8 sm:grid-cols-2">
         {skillGroups.map((g) => (
-          <div key={g.group}>
+          <div key={g.group} className="card-hover p-5">
             <div className="flex items-center gap-2 text-sm font-semibold text-accent">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 {icons[g.icon]}
@@ -28,9 +29,7 @@ export default function Skills({ heading }: { heading: string }) {
                     <span>{s.name}</span>
                     <span className="text-muted">{s.level}%</span>
                   </div>
-                  <div className="mt-1 h-1.5 rounded-full bg-line">
-                    <div className="h-1.5 rounded-full bg-accent" style={{ width: `${s.level}%` }} />
-                  </div>
+                  <SkillBar level={s.level} />
                 </li>
               ))}
             </ul>

@@ -64,3 +64,43 @@ html { scroll-behavior: smooth; }
   transition: width 0.25s ease;
 }
 .link-underline:hover::after { width: 100%; }
+
+/* ===== Soft glass redesign ===== */
+html { background: var(--color-bg); }
+body { background: transparent; }
+.glow-bg::before { display: none; }
+
+.card-hover {
+  position: relative;
+  border-radius: 1.25rem;
+  background: color-mix(in srgb, var(--color-bg) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-fg) 10%, transparent);
+  backdrop-filter: blur(18px) saturate(1.5);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 45%, transparent), 0 10px 40px -20px rgb(0 0 0 / .25);
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .2s ease-out, border-color .25s ease, box-shadow .25s ease;
+  overflow: hidden;
+}
+.card-hover::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .25s;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--color-accent) 22%, transparent), transparent 70%);
+}
+.card-hover:hover { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px); border-color: color-mix(in srgb, var(--color-accent) 55%, transparent); }
+.card-hover:hover::after { opacity: 1; }
+
+#top h1 {
+  background: linear-gradient(110deg, var(--color-fg) 20%, var(--color-accent) 50%, var(--color-fg) 80%);
+  background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shimmer 7s ease-in-out infinite alternate;
+}
+@keyframes shimmer { to { background-position: 100% 0; } }
+
+.has-cursor, .has-cursor * { cursor: none; }
+.has-cursor input, .has-cursor textarea { cursor: text; }
+.cur-dot, .cur-ring { position: fixed; left: 0; top: 0; z-index: 9999; pointer-events: none; border-radius: 9999px; }
+.cur-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--color-accent); }
+.cur-ring { width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1px solid var(--color-accent); scale: 1; transition: scale .25s ease, background .25s ease; }
+.cur-ring[data-hot="1"] { scale: 1.9; background: color-mix(in srgb, var(--color-accent) 14%, transparent); }
+@media (pointer: coarse) { .cur-dot, .cur-ring { display: none; } }
+@media (prefers-reduced-motion: reduce) { #top h1 { animation: none; } .card-hover { transform: none !important; } }

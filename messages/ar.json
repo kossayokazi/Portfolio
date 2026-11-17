@@ -8,6 +8,8 @@
     "work": "شاهد أعمالي"
   },
   "about": { "heading": "من أنا" },
+  "skills": { "heading": "المهارات" },
+  "timeline": { "heading": "الخبرة والتعليم" },
   "projectsPage": { "filterAll": "الكل", "filterWeb": "ويب", "filterSaas": "SaaS", "filterAi": "ذكاء اصطناعي", "viewCase": "عرض دراسة الحالة", "viewCode": "عرض الكود", "viewLive": "تجربة حية" },
   "caseStudy": { "problem": "المشكلة", "solution": "الحل", "role": "دوري", "highlights": "أبرز النقاط", "stack": "التقنيات المستخدمة", "back": "الرجوع إلى المشاريع" },
     "contact": {
