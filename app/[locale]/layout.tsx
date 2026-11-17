@@ -6,6 +6,9 @@ import { locales, getDict, dirOf, isLocale, type Locale } from "@/lib/i18n";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+import GlassBackdrop from "@/components/GlassBackdrop";
+import Cursor from "@/components/Cursor";
+
 export const dynamicParams = false;
 export const generateStaticParams = () => locales.map((locale) => ({ locale }));
 
@@ -31,7 +34,6 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
       description,
       url: `/${locale}/`,
       siteName: "Kossay",
-      images: [{ url: "/og-image.png", width: 1200, height: 630 }],
       locale,
       type: "website",
     },
@@ -39,7 +41,6 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: ["/og-image.png"],
     },
   };
 }
@@ -57,6 +58,8 @@ export default async function RootLayout({ children, params }: { children: React
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
       <body className="min-h-screen antialiased">
+        <GlassBackdrop />
+        <Cursor />
         <Script id="ld-json" type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
