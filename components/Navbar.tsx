@@ -30,7 +30,7 @@ export default function Navbar({ locale, nav, labels }: Props) {
   return (
     <header className="sticky top-0 z-40 px-3 pt-3">
       <div
-        className={`mx-auto max-w-6xl rounded-2xl border border-line bg-bg/50 backdrop-blur-2xl backdrop-saturate-150 transition-shadow duration-300 ${
+        className={`mx-auto max-w-6xl rounded-2xl border border-line bg-bg/50 backdrop-blur-xl transition-shadow duration-300 ${
           scrolled ? "shadow-[0_12px_40px_-16px_rgb(0_0_0/0.35)]" : ""
         }`}
       >

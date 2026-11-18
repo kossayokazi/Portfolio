@@ -5,7 +5,7 @@ const VS = "attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}";
 const FS = `precision highp float;uniform vec2 r,m;uniform float t,d;
 float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
-float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*n(p);p*=2.;a*=.5;}return v;}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<3;i++){v+=a*n(p);p*=2.;a*=.5;}return v;}
 void main(){
   vec2 q=(gl_FragCoord.xy-.5*r)/r.y, mm=(m-.5*r)/r.y;
   float w=fbm(q*1.6+t*.05+fbm(q*2.-t*.04)*1.5);
@@ -38,11 +38,14 @@ export default function GlassBackdrop() {
     gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     const U = (k: string) => gl.getUniformLocation(pr, k);
     const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const dpr = Math.min(devicePixelRatio || 1, 1.5);
+    const dpr = 0.5;
     let mx = 0.5, my = 0.5, sx = 0.5, sy = 0.5, raf = 0, dark = 1;
+    let last = 0;
     const resize = () => { c.width = innerWidth * dpr; c.height = innerHeight * dpr; gl.viewport(0, 0, c.width, c.height); };
     const move = (e: PointerEvent) => { mx = e.clientX / innerWidth; my = 1 - e.clientY / innerHeight; };
     const draw = (ms: number) => {
+      if (!still && ms - last < 33) { raf = requestAnimationFrame(draw); return; }
+      last = ms;
       sx += (mx - sx) * 0.05; sy += (my - sy) * 0.05;
       const target = document.documentElement.classList.contains("dark") ? 1 : 0;
       dark += (target - dark) * 0.08;
