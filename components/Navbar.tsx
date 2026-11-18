@@ -13,7 +13,7 @@ export default function Navbar({ locale, nav, labels }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const [hover, setHover] = useState<string | null>(null);
   const path = usePathname() || `/${locale}/`;
-  const swap = (l: string) => path.replace(/^\/(en|fr|ar)/, `/${l}`);
+  const swap = (l: string) => path.replace(/^\/(en|fr)/, `/${l}`);
 
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 24);
