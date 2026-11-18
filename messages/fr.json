@@ -1,11 +1,12 @@
 {
   "nav": { "home": "Accueil", "about": "À propos", "services": "Services", "projects": "Projets", "blog": "Blog", "contact": "Contact" },
   "hero": {
-    "badge": "Disponible pour de nouveaux projets",
-    "title": "Salut, je suis Kossay. Je crée des applications web que les gens aiment utiliser.",
-    "sub": "Développeur Full-Stack, j'aide les entreprises à lancer des sites, produits SaaS, boutiques en ligne et outils IA rapides, propres et fiables.",
-    "cta": "Demander un devis",
-    "work": "Voir mes projets"
+    "badge": "Ouvert aux postes en entreprise et aux missions freelance",
+    "title": "Bonjour, je suis Kossay. Je crée des applications web agréables à utiliser.",
+    "sub": "Développeur Full-Stack (React, TypeScript, Node.js). Je transforme des idées en produits rapides et soignés, des outils SaaS aux boutiques en ligne et fonctionnalités IA.",
+    "cta": "Me contacter",
+    "work": "Voir mes projets",
+    "cv": "Télécharger mon CV"
   },
   "about": { "heading": "À propos de moi" },
   "skills": { "heading": "Compétences" },

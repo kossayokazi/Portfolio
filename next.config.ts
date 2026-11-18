@@ -5,7 +5,10 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   trailingSlash: true,
   async redirects() {
-    return [{ source: "/", destination: "/en/", permanent: false }];
+    return [
+      { source: "/", destination: "/en/", permanent: false },
+      { source: "/ar/:path*", destination: "/en/", permanent: true },
+    ];
   },
 };
 
