@@ -41,7 +41,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       <section className={section}>
         <Reveal>
-          <Skills heading={d.skills.heading} />
+          <Skills heading={d.skills.heading} daily={d.skills.daily} also={d.skills.also} />
         </Reveal>
       </section>
 
