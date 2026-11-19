@@ -1,6 +1,5 @@
 import type { ReactElement } from "react";
 import { skillGroups } from "@/data/content";
-import SkillBar from "@/components/SkillBar";
 
 const icons: Record<string, ReactElement> = {
   code: <path d="M8 4 3 12l5 8M16 4l5 8-5 8" />,
@@ -9,11 +8,21 @@ const icons: Record<string, ReactElement> = {
   spark: <path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" />,
 };
 
-export default function Skills({ heading }: { heading: string }) {
+type Props = { heading: string; daily: string; also: string };
+
+export default function Skills({ heading, daily, also }: Props) {
   return (
     <div>
       <h2 className="text-2xl font-bold md:text-3xl">{heading}</h2>
-      <div className="mt-8 grid gap-8 sm:grid-cols-2">
+      <div className="mt-4 flex flex-wrap gap-5 text-sm text-muted">
+        <span className="inline-flex items-center gap-2">
+          <span className="h-2.5 w-2.5 rounded-full bg-accent" aria-hidden />{daily}
+        </span>
+        <span className="inline-flex items-center gap-2">
+          <span className="h-2.5 w-2.5 rounded-full border border-line" aria-hidden />{also}
+        </span>
+      </div>
+      <div className="mt-8 grid gap-6 sm:grid-cols-2">
         {skillGroups.map((g) => (
           <div key={g.group} className="card-hover p-5">
             <div className="flex items-center gap-2 text-sm font-semibold text-accent">
@@ -22,14 +31,15 @@ export default function Skills({ heading }: { heading: string }) {
               </svg>
               {g.group}
             </div>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-4 flex flex-wrap gap-2">
               {g.skills.map((s) => (
-                <li key={s.name}>
-                  <div className="flex justify-between text-sm">
-                    <span>{s.name}</span>
-                    <span className="text-muted">{s.level}%</span>
-                  </div>
-                  <SkillBar level={s.level} />
+                <li
+                  key={s.name}
+                  className={`rounded-full border px-3 py-1 text-sm ${
+                    s.daily ? "border-accent/50 bg-accent/10 text-fg" : "border-line text-muted"
+                  }`}
+                >
+                  {s.name}
                 </li>
               ))}
             </ul>
