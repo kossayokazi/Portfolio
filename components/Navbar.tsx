@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { locales, type Locale } from "@/lib/i18n";
 
 type Props = { locale: Locale; nav: Record<string, string>; labels: { theme: string; language: string; menu: string } };
-const items: [string, string][] = [["home", ""], ["about", "#about"], ["services", "#services"], ["projects", "#projects"], ["blog", "#blog"], ["contact", "#contact"]];
+const items: [string, string][] = [["home", ""], ["projects", "#projects"], ["about", "#about"], ["services", "#services"], ["blog", "#blog"], ["contact", "#contact"]];
 
 export default function Navbar({ locale, nav, labels }: Props) {
   const [open, setOpen] = useState(false);

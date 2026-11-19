@@ -5,6 +5,7 @@ import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import { locales, getDict, isLocale, type Locale } from "@/lib/i18n";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import type { Metadata } from "next";
 
 export const dynamicParams = false;
 export const generateStaticParams = () => {
@@ -13,6 +14,25 @@ export const generateStaticParams = () => {
 };
 
 type P = { params: Promise<{ locale: string; slug: string }> };
+
+export async function generateMetadata({ params }: P): Promise<Metadata> {
+  const { locale, slug } = await params;
+  try {
+    const { meta } = getPostBySlug(slug);
+    const title = `${meta.title} | Kossay`;
+    const url = `/${locale}/blog/${slug}/`;
+    const images = [{ url: `/${locale}/opengraph-image`, width: 1200, height: 630 }];
+    return {
+      title,
+      description: meta.excerpt,
+      alternates: { canonical: url, languages: { en: `/en/blog/${slug}/`, fr: `/fr/blog/${slug}/` } },
+      openGraph: { title, description: meta.excerpt, url, type: "article", publishedTime: meta.date, images },
+      twitter: { card: "summary_large_image", title, description: meta.excerpt, images },
+    };
+  } catch {
+    return {};
+  }
+}
 
 export default async function BlogPost({ params }: P) {
   const { locale: raw, slug } = await params;
