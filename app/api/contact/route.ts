@@ -1,37 +1,30 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { readContactConfig } from "@/lib/contact/config";
+import { validateContact } from "@/lib/contact/validate";
+import { sendContactMail } from "@/lib/contact/mail";
+import { isRateLimited } from "@/lib/contact/rate-limit";
+
+const json = (body: object, status = 200) => NextResponse.json(body, { status });
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message } = await req.json();
+    if (await isRateLimited(req)) return json({ error: "Too many requests" }, 429);
 
-    if (!name || !email || !message) {
-      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
-    }
-    if (typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
-    }
-
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const to = process.env.CONTACT_EMAIL;
-    if (!to) return NextResponse.json({ error: "Server misconfigured" }, { status: 500 });
-
-    const { error } = await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>",
-      to,
-      replyTo: email,
-      subject: `New message from ${name}`,
-      text: `From: ${name} <${email}>\n\n${message}`,
-    });
-
-    if (error) {
-      console.error("Resend error:", error);
-      return NextResponse.json({ error: "Email failed" }, { status: 502 });
+    const result = validateContact(await req.json().catch(() => null));
+    if (!result.ok) {
+      // Bots get a fake success so they don't adapt; real users get a clear 400.
+      return result.reason === "bot" ? json({ ok: true }) : json({ error: "Invalid input" }, 400);
     }
 
-    return NextResponse.json({ ok: true });
+    const mail = await sendContactMail(readContactConfig(), result.data);
+    if (!mail.ok) {
+      console.error("Resend error:", mail.error);
+      return json({ error: "Email failed" }, 502);
+    }
+    return json({ ok: true });
   } catch (err) {
+    // A missing env var lands here, and the log names it.
     console.error("Contact route error:", err);
-    return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+    return json({ error: "Something went wrong" }, 500);
   }
 }
