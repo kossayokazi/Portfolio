@@ -74,7 +74,7 @@ export const experience = [
 export const education = {
   degree: "Bachelor's Degree in Information Technology",
   school: "Higher Institute of Technological Studies (ISET), Gafsa",
-  year: "2026",
+  year: "Jun 2026",
   end: "2026-06",
 };
 export const projects = [
