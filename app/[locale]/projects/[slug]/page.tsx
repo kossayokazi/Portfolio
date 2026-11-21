@@ -1,7 +1,9 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { locales, getDict, isLocale, type Locale } from "@/lib/i18n";
 import { projects } from "@/data/content";
+import { getContent } from "@/data";
 import ProjectMockup from "@/components/ProjectMockup";
 
 export const dynamicParams = false;
@@ -10,11 +12,28 @@ export const generateStaticParams = () =>
 
 type P = { params: Promise<{ locale: string; slug: string }> };
 
+export async function generateMetadata({ params }: P): Promise<Metadata> {
+  const { locale: raw, slug } = await params;
+  const locale: Locale = isLocale(raw) ? raw : "en";
+  const p = getContent(locale).projects.find((x) => x.slug === slug);
+  if (!p) return {};
+  const title = `${p.title} | Kossay`;
+  const url = `/${locale}/projects/${slug}/`;
+  const images = [{ url: `/${locale}/opengraph-image`, width: 1200, height: 630 }];
+  return {
+    title,
+    description: p.oneLiner,
+    alternates: { canonical: url, languages: { en: `/en/projects/${slug}/`, fr: `/fr/projects/${slug}/` } },
+    openGraph: { title, description: p.oneLiner, url, type: "article", images },
+    twitter: { card: "summary_large_image", title, description: p.oneLiner, images },
+  };
+}
+
 export default async function CaseStudy({ params }: P) {
   const { locale: raw, slug } = await params;
   const locale: Locale = isLocale(raw) ? raw : "en";
   const d = getDict(locale);
-  const project = projects.find((p) => p.slug === slug);
+  const project = getContent(locale).projects.find((p) => p.slug === slug);
   if (!project) return notFound();
 
   return (

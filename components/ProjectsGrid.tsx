@@ -1,13 +1,12 @@
 "use client";
 import { useState } from "react";
-import { projects } from "@/data/content";
 import ProjectCard from "./ProjectCard";
 import type { Locale } from "@/lib/i18n";
 
 type Filters = { filterAll: string; filterWeb: string; filterSaas: string; filterAi: string; viewCase: string };
 
-export default function ProjectsGrid({ locale, t }: { locale: Locale; t: Filters }) {
-  const cats = [
+export default function ProjectsGrid({ locale, t, projects }: { locale: Locale; t: Filters; projects: Parameters<typeof ProjectCard>[0]["project"][] }) {
+    const cats = [
     { id: "all", label: t.filterAll },
     { id: "web", label: t.filterWeb },
     { id: "saas", label: t.filterSaas },
