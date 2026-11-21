@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     const to = process.env.CONTACT_EMAIL;
     if (!to) return NextResponse.json({ error: "Server misconfigured" }, { status: 500 });
 
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
       to,
       replyTo: email,
@@ -24,8 +24,14 @@ export async function POST(req: Request) {
       text: `From: ${name} <${email}>\n\n${message}`,
     });
 
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json({ error: "Email failed" }, { status: 502 });
+    }
+
     return NextResponse.json({ ok: true });
-  } catch {
+  } catch (err) {
+    console.error("Contact route error:", err);
     return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
   }
 }
