@@ -9,7 +9,8 @@
     "cv": "Download CV"
   },
   "about": { "heading": "About me" },
-  "skills": { "heading": "Skills", "daily": "Daily use", "also": "Also used" },  "timeline": { "heading": "Experience & education" },
+  "skills": { "heading": "Skills", "daily": "Daily use", "also": "Also used" },
+  "timeline": { "heading": "Experience & education" },
   "projectsPage": { "filterAll": "All", "filterWeb": "Web", "filterSaas": "SaaS", "filterAi": "AI", "viewCase": "View case study", "viewCode": "View code", "viewLive": "Live demo" },
   "caseStudy": { "problem": "The problem", "solution": "The solution", "role": "My role", "highlights": "Highlights", "stack": "Stack", "back": "Back to projects" },
     "contact": {

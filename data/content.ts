@@ -7,7 +7,11 @@ export const profile = {
 };
 
 export const about = {
-  text: "I'm a full-stack developer with a soft spot for clean interfaces and fast, well-built products. I work mainly with React and TypeScript on the front, and Node.js and MongoDB on the back. I recently built Iterum, an AI-powered Scrum platform with a fully local AI service, so I'm comfortable with everything from a polished UI to the logic behind it. I hold a Bachelor's degree in IT (with excellent honors) and speak Arabic, French, and English, so I'm happy to work with clients in their own language.",
+  text: [
+    "I'm a full-stack developer with a soft spot for clean interfaces and fast, well-built products.",
+    "I work mainly with React and TypeScript on the front, and Node.js and MongoDB on the back. I recently built Iterum, an AI-powered Scrum platform with a fully local AI service, so I'm comfortable from a polished UI to the logic behind it.",
+    "I hold a Bachelor's degree in IT (with excellent honors) and speak Arabic, French, and English, so I'm happy to work with clients in their own language.",
+  ],
 };
 
 export const services = [
@@ -61,16 +65,17 @@ export const skillGroups = [
 ];
 
 export const experience = [
-  { role: "Web Developer", org: "White Honey", period: "Jun 2026 – Sep 2026", text: "Built a web app for product, supplier, and stock management." },
-  { role: "PFE Intern", org: "STRATYZE", period: "Feb 2026 – Jun 2026", text: "Built Iterum, an AI-powered Scrum platform, with a teammate." },
-  { role: "Summer Intern", org: "Institut Horizon", period: "Jun 2025 – Aug 2025", text: "Delivered software solutions and handled system maintenance." },
-  { role: "Advanced Intern", org: "Gafsa Phosphate Company (CPG)", period: "Jan 2025 – Feb 2025", text: "Full-stack web solutions with Node.js and MongoDB." },
+  { role: "Web Developer", org: "White Honey", period: "Jun 2026 – Sep 2026", end: "2026-09", text: "Built a web app for product, supplier, and stock management." },
+  { role: "PFE Intern", org: "STRATYZE", period: "Feb 2026 – Jun 2026", end: "2026-06", text: "Built Iterum, an AI-powered Scrum platform, with a teammate." },
+  { role: "Summer Intern", org: "Institut Horizon", period: "Jun 2025 – Aug 2025", end: "2025-08", text: "Delivered software solutions and handled system maintenance." },
+  { role: "Advanced Intern", org: "Gafsa Phosphate Company (CPG)", period: "Jan 2025 – Feb 2025", end: "2025-02", text: "Full-stack web solutions with Node.js and MongoDB." },
 ];
 
 export const education = {
-  degree: "Bachelor's Degree in Information Technology (Excellent)",
+  degree: "Bachelor's Degree in Information Technology",
   school: "Higher Institute of Technological Studies (ISET), Gafsa",
   year: "2026",
+  end: "2026-06",
 };
 export const projects = [
   {
