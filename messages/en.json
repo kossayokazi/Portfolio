@@ -1,5 +1,19 @@
 {
   "nav": { "home": "Home", "about": "About", "services": "Services", "projects": "Projects", "blog": "Blog", "contact": "Contact" },
+  "assistant": {
+  "open": "Ask about Kossay",
+  "close": "Close",
+  "title": "Ask about Kossay",
+  "intro": "Hi! I'm an AI assistant. Ask me about Kossay's projects, skills or experience.",
+  "suggestions": ["What has Kossay built with AI?", "Is Kossay a fit for a React role?", "How can I hire him?"],
+  "placeholder": "Type your question…",
+  "send": "Send",
+  "thinking": "Thinking…",
+  "disclaimer": "AI-generated and may contain mistakes. See the CV for details.",
+  "contact": "Contact Kossay",
+  "error": "The assistant is unavailable right now. Please use the contact form.",
+  "limit": "Too many questions in a short time. Please try again in a minute."
+},
   "hero": {
     "badge": "Open to full-time roles and freelance projects",
     "title": "Hi, I'm Kossay. I build web apps people enjoy using.",
@@ -35,17 +49,3 @@
   "footer": { "rights": "© 2026 Kossay. All rights reserved." },
   "common": { "soon": "Coming soon.", "theme": "Toggle theme", "language": "Language", "menu": "Menu" }
 }
-"assistant": {
-  "open": "Ask about Kossay",
-  "close": "Close",
-  "title": "Ask about Kossay",
-  "intro": "Hi! I'm an AI assistant. Ask me about Kossay's projects, skills or experience.",
-  "suggestions": ["What has Kossay built with AI?", "Is Kossay a fit for a React role?", "How can I hire him?"],
-  "placeholder": "Type your question…",
-  "send": "Send",
-  "thinking": "Thinking…",
-  "disclaimer": "AI-generated and may contain mistakes. See the CV for details.",
-  "contact": "Contact Kossay",
-  "error": "The assistant is unavailable right now. Please use the contact form.",
-  "limit": "Too many questions in a short time. Please try again in a minute."
-},
