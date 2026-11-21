@@ -23,5 +23,5 @@ test("assistant shows a fallback when the API is unavailable", async ({ page }) 
   await page.route("**/api/ask", (route) => route.fulfill({ status: 503, json: { error: "x" } }));
   await open(page);
   await page.getByRole("button", { name: "What has Kossay built with AI?" }).click();
-  await expect(page.getByRole("alert")).toContainText("unavailable");
+  await expect(page.getByRole("dialog").getByRole("alert")).toContainText("unavailable");
 });
