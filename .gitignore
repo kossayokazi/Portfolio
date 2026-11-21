@@ -42,3 +42,7 @@ next-env.d.ts
 .env.local
 .open-next
 .wrangler
+
+
+/test-results/
+/playwright-report/

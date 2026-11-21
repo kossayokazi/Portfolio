@@ -1,12 +1,13 @@
+import { sortNewestFirst } from "@/lib/timeline";
+
 type Exp = { role: string; org: string; period: string; end: string; text: string };
 type Edu = { degree: string; school: string; year: string; end: string };
 
 export default function Timeline({ heading, experience, education }: { heading: string; experience: Exp[]; education: Edu }) {
-  const items = [
+    const items = sortNewestFirst([
     ...experience,
     { role: education.degree, org: education.school, period: education.year, end: education.end, text: "" },
-  ].sort((a, b) => b.end.localeCompare(a.end));
-
+  ]);
   return (
     <div>
       <h2 className="text-2xl font-bold md:text-3xl">{heading}</h2>
