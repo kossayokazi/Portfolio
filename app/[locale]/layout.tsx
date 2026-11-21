@@ -5,6 +5,7 @@ import "../globals.css";
 import { locales, getDict, isLocale, type Locale } from "@/lib/i18n";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Launcher from "@/components/assistant/Launcher";
 
 import GlassBackdrop from "@/components/GlassBackdrop";
 import Cursor from "@/components/Cursor";
@@ -73,6 +74,7 @@ export default async function RootLayout({ children, params }: { children: React
         <Navbar locale={locale} nav={d.nav} labels={d.common} />
         <main>{children}</main>
         <Footer text={d.footer.rights} />
+        <Launcher locale={locale} t={d.assistant} />
       </body>
     </html>
   );

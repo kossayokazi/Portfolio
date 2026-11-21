@@ -35,3 +35,17 @@
   "footer": { "rights": "© 2026 Kossay. Tous droits réservés." },
   "common": { "soon": "Bientôt disponible.", "theme": "Changer de thème", "language": "Langue", "menu": "Menu" }
 }
+"assistant": {
+  "open": "Poser une question sur Kossay",
+  "close": "Fermer",
+  "title": "Poser une question sur Kossay",
+  "intro": "Bonjour ! Je suis un assistant IA. Posez-moi vos questions sur les projets, les compétences ou l'expérience de Kossay.",
+  "suggestions": ["Qu'a réalisé Kossay avec l'IA ?", "Kossay convient-il à un poste React ?", "Comment le recruter ?"],
+  "placeholder": "Votre question…",
+  "send": "Envoyer",
+  "thinking": "Réflexion…",
+  "disclaimer": "Réponses générées par IA, pouvant contenir des erreurs. Voir le CV pour les détails.",
+  "contact": "Contacter Kossay",
+  "error": "L'assistant est indisponible pour le moment. Utilisez le formulaire de contact.",
+  "limit": "Trop de questions en peu de temps. Réessayez dans une minute."
+},
