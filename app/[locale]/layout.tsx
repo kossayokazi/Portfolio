@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Script from "next/script";
 import "../globals.css";
-import { locales, getDict, dirOf, isLocale, type Locale } from "@/lib/i18n";
+import { locales, getDict, isLocale, type Locale } from "@/lib/i18n";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -53,7 +53,7 @@ export default async function RootLayout({ children, params }: { children: React
   const locale: Locale = isLocale(raw) ? raw : "en";
   const d = getDict(locale);
   return (
-    <html lang={locale} dir={dirOf(locale)} suppressHydrationWarning>
+    <html lang={locale} dir="ltr" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>

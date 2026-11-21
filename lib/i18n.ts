@@ -8,4 +8,3 @@ const dicts: Record<Locale, Dict> = { en, fr };
 
 export const isLocale = (l: string): l is Locale => (locales as readonly string[]).includes(l);
 export const getDict = (l: string): Dict => dicts[isLocale(l) ? l : "en"];
-export const dirOf = (_l: Locale) => "ltr" as const;
