@@ -7,7 +7,11 @@ export const profile = {
 };
 
 export const about = {
-  text: "I'm a full-stack developer with a soft spot for clean interfaces and fast, well-built products. I work mainly with React and TypeScript on the front, and Node.js and MongoDB on the back. I recently built Iterum, an AI-powered Scrum platform with a fully local AI service, so I'm comfortable with everything from a polished UI to the logic behind it. I hold a Bachelor's degree in IT (with excellent honors) and speak Arabic, French, and English, so I'm happy to work with clients in their own language.",
+  text: [
+    "I'm a full-stack developer with a soft spot for clean interfaces and fast, well-built products.",
+    "I work mainly with React and TypeScript on the front, and Node.js and MongoDB on the back. I recently built Iterum, an AI-powered Scrum platform with a fully local AI service, so I'm comfortable from a polished UI to the logic behind it.",
+    "I hold a Bachelor's degree in IT (with excellent honors) and speak Arabic, French, and English, so I'm happy to work with clients in their own language.",
+  ],
 };
 
 export const services = [
