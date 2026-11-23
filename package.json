@@ -14,6 +14,8 @@
     "cf:deploy": "opennextjs-cloudflare deploy"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
     "framer-motion": "^13.4.5",
     "gray-matter": "^4.0.3",
     "next": "^16.3.8",
@@ -23,7 +25,8 @@
     "reading-time": "^1.5.0",
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1",
-    "resend": "^6.31.0"
+    "resend": "^6.31.0",
+    "three": "^0.187.0"
   },
   "devDependencies": {
     "@opennextjs/cloudflare": "^1.20.8",
@@ -33,6 +36,7 @@
     "@types/node": "^22.20.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.187.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.6",
     "tailwindcss": "^4",
