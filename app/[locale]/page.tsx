@@ -10,6 +10,7 @@ import BlogList from "@/components/BlogList";
 import Reveal from "@/components/Reveal";
 import { getDict, isLocale, type Locale } from "@/lib/i18n";
 import { getContent } from "@/data";
+import WorldRoot from "@/components/world/WorldRoot";
 
 const section = "mx-auto max-w-6xl scroll-mt-20 border-t border-line px-5 py-20";
 
@@ -19,7 +20,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const d = getDict(locale);
   const c = getContent(locale);
 
-  return (
+  
+  const classic = (
+
     <>
       <Hero locale={locale} t={d.hero} />
 
@@ -83,4 +86,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
     </>
   );
+
+  return <WorldRoot t={d.world} fallback={classic} />;
 }

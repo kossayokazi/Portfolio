@@ -44,6 +44,7 @@ export default function GlassBackdrop() {
     const resize = () => { c.width = innerWidth * dpr; c.height = innerHeight * dpr; gl.viewport(0, 0, c.width, c.height); };
     const move = (e: PointerEvent) => { mx = e.clientX / innerWidth; my = 1 - e.clientY / innerHeight; };
     const draw = (ms: number) => {
+      if (document.documentElement.dataset.world === "on") { raf = requestAnimationFrame(draw); return; }
       if (!still && ms - last < 33) { raf = requestAnimationFrame(draw); return; }
       last = ms;
       sx += (mx - sx) * 0.05; sy += (my - sy) * 0.05;
