@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useSyncExternalStore, type ReactNode } from "react";
 import { canRunWorld, detectCapability } from "@/lib/world/capability";
 import { worldEnabled } from "@/lib/world/flag";
 import type { WorldStrings } from "./types";
@@ -10,16 +10,22 @@ const Scene = dynamic(() => import("./Scene"), { ssr: false });
 
 type Mode = "pending" | "classic" | "world";
 
+let cached: Mode | undefined;
+function getClientMode(): Mode {
+  // Computed once: the WebGL probe and the flag read must not repeat on every render.
+  cached ??= worldEnabled() && canRunWorld(detectCapability()) ? "world" : "classic";
+  return cached;
+}
+const subscribe = () => () => {};
+const getServerMode = (): Mode => "pending";
+
 export default function WorldRoot({ fallback, t }: { fallback: ReactNode; t: WorldStrings }) {
-  const [mode, setMode] = useState<Mode>("pending");
+  const mode = useSyncExternalStore(subscribe, getClientMode, getServerMode);
 
   useEffect(() => {
-    setMode(worldEnabled() && canRunWorld(detectCapability()) ? "world" : "classic");
-  }, []);
-
-  useEffect(() => {
+    if (mode !== "world") return;
     const root = document.documentElement;
-    if (mode === "world") root.dataset.world = "on";
+    root.dataset.world = "on";
     return () => { delete root.dataset.world; };
   }, [mode]);
 

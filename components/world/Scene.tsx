@@ -1,7 +1,7 @@
 "use client";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
-import { useEffect, useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import type { Mesh } from "three";
 import { initialPhase, nextPhase, type Phase } from "@/lib/world/machine";
 import { introSeen, markIntroSeen } from "@/lib/world/flag";
@@ -37,8 +37,8 @@ function CameraRig({ phase, onRevealDone }: { phase: Phase; onRevealDone: () => 
 }
 
 export default function Scene({ t }: { t: WorldStrings }) {
-  const [phase, send] = useReducer(nextPhase, undefined, () => initialPhase(introSeen()));
-  const start = useRef(phase).current;
+  const [initial] = useState<Phase>(() => initialPhase(introSeen()));
+  const [phase, send] = useReducer(nextPhase, initial);
 
   // Placeholder: in Phase C the intro ends when the audio ends.
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function Scene({ t }: { t: WorldStrings }) {
       <Canvas
         dpr={[1, 1.5]}
         gl={{ powerPreference: "high-performance" }}
-        camera={{ position: [0, 0, start === "explore" ? FAR : NEAR], fov: 50 }}
+        camera={{ position: [0, 0, initial === "explore" ? FAR : NEAR], fov: 50 }}
       >
         <color attach="background" args={["#05060f"]} />
         <ambientLight intensity={0.4} color="#7c3aed" />
