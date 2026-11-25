@@ -1,6 +1,6 @@
 {
   "nav": { "home": "Accueil", "about": "À propos", "services": "Services", "projects": "Projets", "blog": "Blog", "contact": "Contact" },
-  "world": { "tagline": "Développeur Full-Stack", "start": "Démarrer l'expérience", "skip": "Passer l'intro" },
+  "world": { "tagline": "Développeur Full-Stack", "start": "Démarrer l'expérience", "skip": "Passer l'intro", "navLabel": "Sections", "close": "Fermer", "overview": "Retour à la planète" },
   "assistant": {
   "open": "Poser une question sur Kossay",
   "close": "Fermer",
