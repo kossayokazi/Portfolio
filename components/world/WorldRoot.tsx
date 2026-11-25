@@ -1,12 +1,16 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useEffect, useSyncExternalStore, type ReactNode } from "react";
+import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { canRunWorld, detectCapability } from "@/lib/world/capability";
 import { worldEnabled } from "@/lib/world/flag";
 import type { WorldStrings } from "./types";
+import WorldBoundary from "./WorldBoundary";
 
 // Loaded only when the 3D mode actually runs, so classic visitors never download three.js.
-const Scene = dynamic(() => import("./Scene"), { ssr: false });
+const Scene = dynamic(() => import("./Scene"), {
+  ssr: false,
+  loading: () => <div className="fixed inset-0 z-[45] bg-[#05060f]" aria-busy="true" />,
+});
 
 type Mode = "pending" | "classic" | "world";
 
@@ -21,14 +25,27 @@ const getServerMode = (): Mode => "pending";
 
 export default function WorldRoot({ fallback, t }: { fallback: ReactNode; t: WorldStrings }) {
   const mode = useSyncExternalStore(subscribe, getClientMode, getServerMode);
+  const [failed, setFailed] = useState(false);
+  const active = mode === "world" && !failed;
 
   useEffect(() => {
-    if (mode !== "world") return;
+    if (!active) return;
     const root = document.documentElement;
     root.dataset.world = "on";
-    return () => { delete root.dataset.world; };
-  }, [mode]);
+    // The page header and footer sit behind the scene: keep keyboard focus out of them.
+    const hidden = Array.from(document.querySelectorAll<HTMLElement>("body > header, body > footer"));
+    hidden.forEach((el) => el.setAttribute("inert", ""));
+    return () => {
+      delete root.dataset.world;
+      hidden.forEach((el) => el.removeAttribute("inert"));
+    };
+  }, [active]);
 
   // "pending" renders the same HTML as the server, so there is no hydration mismatch.
-  return mode === "world" ? <Scene t={t} /> : <>{fallback}</>;
+  if (!active) return <>{fallback}</>;
+  return (
+    <WorldBoundary fallback={fallback} onError={() => setFailed(true)}>
+      <Scene t={t} onFail={() => setFailed(true)} />
+    </WorldBoundary>
+  );
 }

@@ -36,7 +36,7 @@ function CameraRig({ phase, onRevealDone }: { phase: Phase; onRevealDone: () => 
   return null;
 }
 
-export default function Scene({ t }: { t: WorldStrings }) {
+export default function Scene({ t, onFail }: { t: WorldStrings; onFail: () => void }) {
   const [initial] = useState<Phase>(() => initialPhase(introSeen()));
   const [phase, send] = useReducer(nextPhase, initial);
 
@@ -55,6 +55,10 @@ export default function Scene({ t }: { t: WorldStrings }) {
         dpr={[1, 1.5]}
         gl={{ powerPreference: "high-performance" }}
         camera={{ position: [0, 0, initial === "explore" ? FAR : NEAR], fov: 50 }}
+        onCreated={({ gl }) => {
+          // Phones can drop the GPU context under memory pressure: fall back instead of freezing.
+          gl.domElement.addEventListener("webglcontextlost", (e) => { e.preventDefault(); onFail(); }, { once: true });
+        }}
       >
         <color attach="background" args={["#05060f"]} />
         <ambientLight intensity={0.4} color="#7c3aed" />
