@@ -1,6 +1,6 @@
 {
   "nav": { "home": "Home", "about": "About", "services": "Services", "projects": "Projects", "blog": "Blog", "contact": "Contact" },
-  "world": { "tagline": "Full-Stack Developer", "start": "Start experience", "skip": "Skip intro" },
+  "world": { "tagline": "Full-Stack Developer", "start": "Start experience", "skip": "Skip intro", "navLabel": "Sections", "close": "Close", "overview": "Back to the planet" },
   "assistant": {
   "open": "Ask about Kossay",
   "close": "Close",

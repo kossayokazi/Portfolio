@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { canRunWorld, detectCapability } from "@/lib/world/capability";
 import { worldEnabled } from "@/lib/world/flag";
-import type { WorldStrings } from "./types";
+import type { WorldContent } from "./types";
 import WorldBoundary from "./WorldBoundary";
 
 // Loaded only when the 3D mode actually runs, so classic visitors never download three.js.
@@ -23,7 +23,7 @@ function getClientMode(): Mode {
 const subscribe = () => () => {};
 const getServerMode = (): Mode => "pending";
 
-export default function WorldRoot({ fallback, t }: { fallback: ReactNode; t: WorldStrings }) {
+export default function WorldRoot({ fallback, ...content }: WorldContent & { fallback: ReactNode }) {
   const mode = useSyncExternalStore(subscribe, getClientMode, getServerMode);
   const [failed, setFailed] = useState(false);
   const active = mode === "world" && !failed;
@@ -45,7 +45,7 @@ export default function WorldRoot({ fallback, t }: { fallback: ReactNode; t: Wor
   if (!active) return <>{fallback}</>;
   return (
     <WorldBoundary fallback={fallback} onError={() => setFailed(true)}>
-      <Scene t={t} onFail={() => setFailed(true)} />
+      <Scene {...content} onFail={() => setFailed(true)} />
     </WorldBoundary>
   );
 }
