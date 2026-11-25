@@ -1,7 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 
-async function openWorld(page: Page) {
-  await page.goto("/en/?world=1");
+async function openWorld(page: Page, path = "/en/?world=1") {
+  await page.goto(path);
   const webgl = await page.evaluate(() => !!document.createElement("canvas").getContext("webgl"));
   test.skip(!webgl, "WebGL unavailable in this runner");
   await expect(page.locator("html")).toHaveAttribute("data-world", "on");
@@ -40,4 +40,20 @@ test("world mode: a lost WebGL context falls back to the classic page", async ({
   }).toPass();
   await expect(page.locator("#top h1")).toBeVisible();
   await expect(page.locator("body > header")).not.toHaveAttribute("inert", "");
+});
+test("world mode: the dock opens a place and Escape closes it", async ({ page }) => {
+  await openWorld(page);
+  await page.getByRole("button", { name: "Skip intro" }).click();
+  await page.getByRole("navigation", { name: "Sections" }).getByRole("button", { name: "Projects" }).click();
+  const panel = page.getByRole("region", { name: "Projects" });
+  await expect(panel).toBeVisible();
+  await expect(page).toHaveURL(/#projects$/);
+  await page.keyboard.press("Escape");
+  await expect(panel).toHaveCount(0);
+});
+
+test("world mode: a deep link opens its place after the intro", async ({ page }) => {
+  await openWorld(page, "/en/?world=1#about");
+  await page.getByRole("button", { name: "Skip intro" }).click();
+  await expect(page.getByRole("region", { name: "About" })).toBeVisible();
 });
